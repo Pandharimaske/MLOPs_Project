@@ -10,6 +10,8 @@ import yaml
 import logging
 from src.logger import logging
 from src.connections import s3_connection
+from dotenv import load_dotenv
+load_dotenv()
 
 def load_params(params_path: str) -> dict:
     """Load parameters from a YAML file."""
@@ -78,7 +80,7 @@ def main():
         # test_size = 0.2
 
         # df = load_data(data_url='https://raw.githubusercontent.com/vikashishere/Datasets/refs/heads/main/data.csv')
-        s3 = s3_connection.s3_operations("mlops-project-bucket-pandhari" , "AWS_ACCESS_KEY" , "AWS_SECRET_KEY")
+        s3 = s3_connection.s3_operations("mlops-project-bucket-pandhari" , os.getenv("AWS_ACCESS_KEY") , os.getenv("AWS_SECRET_KEY"))
         df = s3.fetch_file_from_s3("IMDB Dataset.csv")
 
         final_df = preprocess_data(df)
