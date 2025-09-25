@@ -1,3 +1,4 @@
+from pyexpat import model
 import numpy as np
 import pandas as pd
 import pickle
@@ -134,11 +135,14 @@ def main():
             
             # Log model to MLflow
             joblib.dump(clf, "model.pkl")
-            mlflow.log_artifact("model.pkl", artifact_path="models")
-            # mlflow.sklearn.log_model(clf, "model")
+            # mlflow.log_artifact("model.pkl", artifact_path="models")
+            mlflow.sklearn.log_model(
+                sk_model=clf,
+                artifact_path="models"
+            )
             
-            # Save model info
-            save_model_info(run.info.run_id, "models/model.pkl", 'reports/experiment_info.json')
+            # 3. Save the correct folder path for the registration step
+            save_model_info(run.info.run_id, "models", 'reports/experiment_info.json')
             
             # Log the metrics file to MLflow
             mlflow.log_artifact('reports/metrics.json')
