@@ -28,11 +28,11 @@ spec:
             memory: "512Mi"
             cpu: "1"
         env:
-        - name: CAPSTONE_TEST
+        - name: MLOPS_PROJECT
           valueFrom:
             secretKeyRef:
-              name: capstone-secret
-              key: CAPSTONE_TEST
+              name: mlops-project-secret
+              key: MLOPs_Project
 
 ---
 apiVersion: v1
