@@ -31,7 +31,7 @@ spec:
         - name: MLOPS_PROJECT
           valueFrom:
             secretKeyRef:
-              name: mlops-project-secret
+              name: capstone-secret
               key: MLOPS_PROJECT
 
 ---
