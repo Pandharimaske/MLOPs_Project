@@ -28,7 +28,7 @@ spec:
             memory: "512Mi"
             cpu: "1"
         env:
-        - name: MLOPS_PROJECT
+        - name: MLOPs_Project
           valueFrom:
             secretKeyRef:
               name: mlops-project-secret
